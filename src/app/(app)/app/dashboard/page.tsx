@@ -7,7 +7,7 @@ import PetList from "@/components/PetList";
 import ContentBlock from "@/components/ContentBlock";
 import PetDetails from "@/components/PetDetails";
 
-const Dashboard = () => {
+const Dashboard = async () => {
   return (
     <main>
       <div className={"flex items-center justify-between text-white py-8"}>

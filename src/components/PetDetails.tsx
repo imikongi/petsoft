@@ -10,29 +10,38 @@ type SectionsProps = {
   pet: Pet;
 };
 
-const TopBar = ({ pet }: SectionsProps) => (
-  <div
-    className={
-      "flex items-center justify-between bg-white px-8 py-5 border-b border-light"
-    }
-  >
-    <div>
-      <Image
-        src={pet.imageUrl}
-        alt={"Selected pet image"}
-        width={75}
-        height={75}
-        className={"w-[75px] h-[75px] rounded-full object-cover"}
-      />
-      <h2 className={"text-3xl font-semibold leading-7 ml-5"}>{pet.name}</h2>
-    </div>
+const TopBar = ({ pet }: SectionsProps) => {
+  const { handleCheckoutPet } = usePetContext();
 
-    <div className={"flex gap-2"}>
-      <PetButton actionType={"edit"}>Edit</PetButton>
-      <PetButton actionType={"checkout"}>Checkout</PetButton>
+  return (
+    <div
+      className={
+        "flex items-center justify-between bg-white px-8 py-5 border-b border-light"
+      }
+    >
+      <div>
+        <Image
+          src={pet.imageUrl}
+          alt={"Selected pet image"}
+          width={75}
+          height={75}
+          className={"w-[75px] h-[75px] rounded-full object-cover"}
+        />
+        <h2 className={"text-3xl font-semibold leading-7 ml-5"}>{pet.name}</h2>
+      </div>
+
+      <div className={"flex gap-2"}>
+        <PetButton actionType={"edit"}>Edit</PetButton>
+        <PetButton
+          actionType={"checkout"}
+          onClick={() => handleCheckoutPet(pet.id)}
+        >
+          Checkout
+        </PetButton>
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 const PetInfo = ({ pet }: SectionsProps) => (
   <div className={"flex justify-around py-10 px-5 text-center"}>

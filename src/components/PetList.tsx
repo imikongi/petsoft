@@ -12,7 +12,7 @@ const PetList = () => {
 
   const filteredPets = useMemo(
     () => pets.filter((pet) => pet.name.toLowerCase().includes(searchQuery)),
-    [searchQuery],
+    [searchQuery, pets],
   );
 
   return (
